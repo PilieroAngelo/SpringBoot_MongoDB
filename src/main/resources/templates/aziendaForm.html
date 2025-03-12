@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea Azienda</title>
+    <style>
+       .aziendaForm {
+           background-color: #ffffff; /* Bianco per il modulo */
+           padding: 20px;
+           border-radius: 10px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           width: 400px;
+           text-align: center;
+       }
+
+       .aziendaForm label,
+       .aziendaForm input,
+       .aziendaForm button {
+           display: block;
+           margin-bottom: 15px;
+           width: 100%;
+       }
+
+       .aziendaForm button {
+           width: auto;
+           padding: 10px 20px;
+           background-color: #4CAF50; /* Colore verde per il bottone */
+           color: white;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           font-size: 16px;
+       }
+
+       .aziendaForm button:hover {
+           background-color: #45a049; /* Colore verde scuro quando si passa sopra il bottone */
+       }
+
+       .aziendaForm input {
+           padding: 10px;
+           border: 1px solid #ccc;
+           border-radius: 5px;
+           font-size: 16px;
+           color: #333;
+       }
+    </style>
+</head>
+<body>
+<h1>Crea Nuova Azienda</h1>
+<form id="insertForm" th:action="@{/aziende}" method="post">
+    <label for="nomeAzienda">Nome Azienda:</label>
+    <input type="text" id="nomeAzienda" name="nomeAzienda" required/><br/>
+
+    <label for="numeroPersonale">Numero Personale:</label>
+    <input type="number" id="numeroPersonale" name="numeroPersonale" min="1" required/><br/>
+
+    <label for="PIVA">Partita IVA:</label>
+    <input type="text" id="PIVA" name="PIVA" pattern="^[A-Za-z0-9]{12}$" title="La Partita IVA deve contenere 12 caratteri alfanumerici" required/><br/>
+
+    <label for="nettoAnnuale">Netto Annuale:</label>
+    <input type="number" id="nettoAnnuale" name="nettoAnnuale" min="0" required/><br/>
+
+    <button type="submit">Crea Azienda</button>
+</form>
+
+<script>
+    $(document).ready(function() {
+        $("#insertForm").submit(function(event) {
+            event.preventDefault(); // Evita il comportamento di default del form
+
+            const aziendaData = {
+                nomeAzienda: $("#nomeAzienda").val(),
+                numeroPersonale: $("#numeroPersonale").val(),
+                piva: $("#piva").val(),
+                nettoAnnuale: $("#nettoAnnuale").val(),
+            };
+
+            // Invia la richiesta POST al controller
+            $.ajax({
+                url: "/aziende", // URL del controller Spring Boot per l'inserimento
+                type: "POST",
+                contentType: "application/json", // Imposta il contenuto come JSON
+                data: JSON.stringify(aziendaData), // Converte i dati in formato JSON
+                success: function(response) {
+                    alert("Azienda inserita con successo!");
+                    // Dopo aver salvato i dati, redirigi alla pagina Get.html
+                    window.location.href = "Get.html"; // Cambia con la tua pagina di destinazione
+                },
+                error: function(xhr, status, error) {
+                    alert("Errore durante l'inserimento dell'azienda. Riprova.");
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+

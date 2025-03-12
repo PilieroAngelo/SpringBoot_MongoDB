@@ -1,0 +1,69 @@
+/* Imposta il colore di sfondo della pagina su celeste chiaro */
+body {
+    background-color: #e0f7fa; /* Celeste chiaro */
+    font-family: 'Times New Roman', Times, serif; /* Font Times New Roman */
+    font-size: 16px; /* Imposta la dimensione del testo a 16px */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form azienda specifico */
+.aziendaForm {
+    background-color: #ffffff; /* Bianco per il modulo */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+/* Stile per il testo all'interno del form */
+.aziendaForm label,
+.aziendaForm input,
+.aziendaForm button {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Modifica la larghezza del bottone */
+.aziendaForm button {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Colore verde per il bottone */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover per i bottoni: quando il cursore passa sopra */
+.aziendaForm button:hover {
+    background-color: #45a049; /* Colore verde scuro quando si passa sopra il bottone */
+}
+
+/* Input di testo */
+.aziendaForm input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Modifica il comportamento del form quando la pagina è in 'modifica' */
+.modifica.html {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Stile per il titolo della pagina */
+h1 {
+    text-align: center;
+    color: #333;
+}

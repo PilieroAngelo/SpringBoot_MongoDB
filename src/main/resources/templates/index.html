@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aziende</title>
+
+    <!-- CSS Styles -->
+    <style>
+        /* Imposta il colore di sfondo della pagina su celeste chiaro */
+        body {
+            background-color: #e0f7fa; /* Celeste chiaro */
+            font-family: 'Times New Roman', Times, serif; /* Font Times New Roman */
+            font-size: 16px; /* Imposta la dimensione del testo a 16px */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Modifica il comportamento del form quando la pagina è in 'modifica' */
+        .modifica.html {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Stile per il titolo della pagina */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>Benvenuto nel sistema delle Aziende</h1>
+<a href="/aziende/nuovo">Crea Nuova Azienda</a>
+
+<h2>Lista delle Aziende:</h2>
+<ul>
+    <li th:each="azienda : ${aziende}">
+        <div>ID: <span th:text="${azienda.id}"></span></div>
+        <div>Nome Azienda: <span th:text="${azienda.nomeAzienda}"></span></div>
+        <div>Numero personale: <span th:text="${azienda.numeroPersonale}"></span></div>
+        <div>Partita IVA: <span th:text="${azienda.PIVA}"></span></div>
+        <div>Netto annuale: <span th:text="${azienda.nettoAnnuale}"></span></div>
+
+        <!-- Link per modificare l'azienda -->
+        <a th:href="@{/aziende/modifica/{id}(id=${azienda.id})}">Modifica</a>
+
+        <!--MOD PARZIALE-->
+        <a th:href="@{/aziende/parziale/{id}(id=${azienda.id})}">Modifica parziale</a>
+
+        <!-- Link per eliminare l'azienda -->
+        <a th:href="@{/aziende/elimina/{id}(id=${azienda.id})}" onclick="return confirm('Sei sicuro di voler eliminare questa azienda?');">Elimina</a>
+    </li>
+</ul>
+</body>
+</html>
