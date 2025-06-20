@@ -3,7 +3,6 @@ package com.azienda.Controller;
 import com.azienda.DTO.AziendaRequestDTO;
 import com.azienda.DTO.AziendaRequestPatchDTO;
 import com.azienda.DTO.AziendaResponseDTO;
-import com.azienda.Exceptions.GlobalExceptionHandler;
 import com.azienda.Service.AziendaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +12,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/aziende")
-public class AziendaController {
+public class AziendaControllerHTML {
 
     private final AziendaService service;
 
-    public AziendaController(AziendaService service) {
+    public AziendaControllerHTML(AziendaService service) {
         this.service = service;
     }
 
