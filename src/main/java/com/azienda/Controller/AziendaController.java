@@ -12,11 +12,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/aziende")
-public class AziendaControllerHTML {
+public class AziendaController {
 
     private final AziendaService service;
 
-    public AziendaControllerHTML(AziendaService service) {
+    public AziendaController(AziendaService service) {
         this.service = service;
     }
 
