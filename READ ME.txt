@@ -1,1 +1,6 @@
 ISTRUZIONI PER L'INSTALLAZIONE:
+
+1) Scarica la repository
+2) Scarica MongoDB e fai l'accesso
+3) Modifica application.properties con i tuoi dati
+4) In MongoDB
